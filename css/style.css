@@ -18,14 +18,14 @@
 }
 
 :root {
-  --main-color: hsl(252, 75%, 60%);
-  --bg-color: #efefef;
-  --bg-light: #dee4e9;
-  --bg-dark: rgba(182, 182, 182, 0.451);
-  --dark-white: #28282a;
-  --white: #ffffff;
-  --light-mode: #ecf0f3;
-  --black: #000;
+  --main-color: hsl(229, 75%, 60%);
+  --bg-color: #212429;
+  --bg-light: #343536;
+  --dark-white: #9da1ac;
+  --bg-dark: rgba(38, 38, 38, 0.451);
+  --white: #28282f;
+  --light-mode: #222228;
+  --black: #fff;
   --shadow: 0rem 0rem 0.625rem 0rem;
   --second-color: #f6083a;
   --main-transition: 0.5s cubic-bezier(0.5, 1.6, 0.4, 0.7);

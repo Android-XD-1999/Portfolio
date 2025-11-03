@@ -22,7 +22,7 @@ let color3 = document.querySelector(".color-3");
 let color4 = document.querySelector(".color-4");
 let color5 = document.querySelector(".color-5");
 // colors values to change it
-let colorValue1 = "--main-color:hsl(252, 75%, 60%);";
+let colorValue1 = "--main-color:hsl(345, 94%, 49%);";
 let colorValue2 = "--main-color:hsl(37, 75%, 60%);";
 let colorValue3 = "--main-color:hsl(345, 94%, 49%);";
 let colorValue4 = "--main-color:hsl(152, 57%, 49%);";
@@ -133,14 +133,14 @@ function chooseFont(selectedFont) {
   document.querySelector("html").style.fontSize = `${selectedFont.getAttribute('data-size')}px`;
   removeFontActive();
   selectedFont.classList.add("active");
-  localStorage.setItem("gemy-font", selectedFont.getAttribute('data-size'));
+  localStorage.setItem("kami-font", selectedFont.getAttribute('data-size'));
 }
 font14.addEventListener("click", () => chooseFont(font14));
 font16.addEventListener("click", () => chooseFont(font16));
 font17.addEventListener("click", () => chooseFont(font17));
 
 // check font-size in localstorage
-let storageFont = localStorage.getItem("gemy-font");
+let storageFont = localStorage.getItem("kami-font");
 if (storageFont == font14.getAttribute('data-size')) {
   chooseFont(font14);
 } else if (storageFont == font16.getAttribute('data-size')) {
@@ -151,7 +151,7 @@ if (storageFont == font14.getAttribute('data-size')) {
 
 
 /*==================  Change Main color =======================*/
-let storageColor = localStorage.getItem("gemy-color");
+let storageColor = localStorage.getItem("kami-color");
 // Remove Activation from all Colors
 function removeColorActive() {
   colorPalette.forEach((color) => {
@@ -163,50 +163,50 @@ function getMainColor(selectedColor, colorValue) {
   body.style.cssText = colorValue;
   removeColorActive();
   selectedColor.classList.add("active");
-  localStorage.setItem("gemy-color", colorValue);
+  localStorage.setItem("kami-color", colorValue);
 }
 /*================== check & Get color from localstorage =======================*/
 if (storageColor === colorValue1) {
-  getMainColor(color1, colorValue1);
+  getMainColor(color3, colorValue3);
 } else if (storageColor === colorValue2) {
-  getMainColor(color2, colorValue2);
+  getMainColor(color3, colorValue3);
 } else if (storageColor === colorValue3) {
   getMainColor(color3, colorValue3);
 } else if (storageColor === colorValue4) {
-  getMainColor(color4, colorValue4);
+  getMainColor(color3, colorValue3);
 } else if (storageColor === colorValue5) {
-  getMainColor(color5, colorValue5);
+  getMainColor(color3, colorValue3);
 }
 /*================== Change Color when Chosse one and Activation it =======================*/
 colorPalette.forEach(color => {
   color.addEventListener("click", () => {
     if (color.classList.contains("color-1")) {
-      getMainColor(color, colorValue1);
+      getMainColor(color, colorValue3);
     }
     else if (color.classList.contains("color-2")) {
-      getMainColor(color, colorValue2);
+      getMainColor(color, colorValue3);
     }
     else if (color.classList.contains("color-3")) {
       getMainColor(color, colorValue3);
     }
     else if (color.classList.contains("color-4")) {
-      getMainColor(color, colorValue4);
+      getMainColor(color, colorValue3);
     }
     else if (color.classList.contains("color-5")) {
-      getMainColor(color, colorValue5);
+      getMainColor(color, colorValue3);
     }
   });
 });
 
 /* =============== Change Theme Mode  ==================*/
-let darkMode = localStorage.getItem('gemy-theme');
+let darkMode = localStorage.getItem('kami-theme');
 // check the theme in localstorage
 if (darkMode === 'dark') {
   enableDarkMode();
 } else if (darkMode === 'light') {
-  disableDarkMode();
+  enableDarkMode();
 } else if (darkMode === 'dim') {
-  deviceThemeMode();
+  enableDarkMode();
 }
 // remove activation from all backgrounds
 function removeThemeSelector() {
@@ -215,19 +215,19 @@ function removeThemeSelector() {
   });
 }
 function enableDarkMode() {
-  localStorage.setItem('gemy-theme', 'dark');
+  localStorage.setItem('kami-theme', 'dark');
   body.classList.add("dark");
   removeThemeSelector();
   Bg3.classList.add("active");
 }
 function disableDarkMode() {
-  localStorage.setItem('gemy-theme', 'light');
+  localStorage.setItem('kami-theme', 'light');
   body.classList.remove("dark");
   removeThemeSelector();
   Bg1.classList.add("active");
 }
 function deviceThemeMode() {
-  localStorage.setItem('gemy-theme', 'dim');
+  localStorage.setItem('kami-theme', 'dim');
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     body.classList.add("dark");
   } else {
@@ -237,8 +237,8 @@ function deviceThemeMode() {
   Bg2.classList.add("active");
 }
 
-Bg1.addEventListener("click", () => disableDarkMode());
-Bg2.addEventListener("click", () => deviceThemeMode());
+Bg1.addEventListener("click", () => enableDarkMode());
+Bg2.addEventListener("click", () => enableDarkMode());
 Bg3.addEventListener("click", () => enableDarkMode());
 
 /*==================  portfolio love icons  =======================*/
@@ -326,17 +326,4 @@ heartIcons.forEach(her => {
     // Run each slideshow independently
     setInterval(showNextSlide, 3000);
   });
-    // Get all buttons with class 'view-btn'
-  document.querySelectorAll(".view-btn").forEach(button => {
-    button.addEventListener("click", () => {
-      // Read URL from button's data attribute
-      const playStoreUrl = button.getAttribute("data-url");
-
-      // Open the URL in a new tab
-      if (playStoreUrl) {
-        window.open(playStoreUrl, "_blank");
-      } else {
-        alert("No Play Store URL found for this button!");
-      }
-    });
-  });
+  
