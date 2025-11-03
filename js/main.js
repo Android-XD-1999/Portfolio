@@ -312,18 +312,17 @@ heartIcons.forEach(her => {
       }, 2000);
     }
 
-// portfolio poject pager
-  document.querySelectorAll('.slideshow-container').forEach(container => {
-    const slides = container.querySelectorAll('.slide');
-    let currentIndex = 0;
+ // Get all buttons with class 'view-btn'
+  document.querySelectorAll(".view-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      // Read URL from button's data attribute
+      const playStoreUrl = button.getAttribute("data-url");
 
-    function showNextSlide() {
-      slides[currentIndex].classList.remove('active');
-      currentIndex = (currentIndex + 1) % slides.length;
-      slides[currentIndex].classList.add('active');
-    }
-
-    // Run each slideshow independently
-    setInterval(showNextSlide, 3000);
+      // Open the URL in a new tab
+      if (playStoreUrl) {
+        window.open(playStoreUrl, "_blank");
+      } else {
+        alert("No Play Store URL found for this button!");
+      }
+    });
   });
-  
